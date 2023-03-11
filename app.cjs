@@ -5,7 +5,6 @@ const dbConnect = require("./db/dbConnect.cjs");
 const User = require("./db/userModel.cjs");
 const Rating = require("./db/ratingsModel.cjs");
 const Articals = require("./db/articalModel.cjs");
-const serverless = require("serverless-http");
 const router = express.Router();
 var cors = require("cors"); 
 
