@@ -165,14 +165,12 @@ router.post("/login", (request, response) => {
 });
 
 
-app.use('/.netlify/functions/api',router)
-// Start the server
-module.exports.handler = serverless(app)
-
-/*
 app.listen(5000, () => {
     console.log('Server started on port 5000');
 });
+
+/*
+
 
 
 
