@@ -5,7 +5,6 @@ const dbConnect = require("./db/dbConnect.cjs");
 const User = require("./db/userModel.cjs");
 const Rating = require("./db/ratingsModel.cjs");
 const Articals = require("./db/articalModel.cjs");
-const router = express.Router();
 var cors = require("cors"); 
 
 console.log(process.env.DB_URL);
@@ -33,12 +32,12 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.json({
         "hello":"hi"
     });
 })
-router.get("/getarticals", async (request, res)=>{
+app.get("/getarticals", async (request, res)=>{
     try {
         const result = await Articals.find();
         res.send(result);
@@ -48,7 +47,7 @@ router.get("/getarticals", async (request, res)=>{
       }
 } )
 
-router.post("/ratings", (request, response) => {
+app.post("/ratings", (request, response) => {
     const rater = new Rating({
         email: request.body.email,
         rating: request.body.rating
@@ -72,7 +71,7 @@ router.post("/ratings", (request, response) => {
 
 });
 
-router.post("/createart", (request, response) => {
+app.post("/createart", (request, response) => {
     const artical = new Articals({
         articalType: request.body.articalType,
         creatorName: request.body.creatorName,
@@ -105,7 +104,7 @@ router.post("/createart", (request, response) => {
 
 
 // register endpoint
-router.post("/register", (request, response) => {
+app.post("/register", (request, response) => {
     const user = new User({
         email: request.body.email,
         password: request.body.password,
@@ -132,7 +131,7 @@ router.post("/register", (request, response) => {
 
 
 // login endpoint
-router.post("/login", (request, response) => {
+app.post("/login", (request, response) => {
     //const email = request.body.email
    // const password = request.body.password
         
