@@ -162,6 +162,12 @@ app.post("/login", (request, response) => {
     })
 });
 
+// delete an artical
+router.delete('/deleteartical/:id',(req,res)=>{
+    Articals.findByIdAndRemove({_id:req.params.id}).then((result) => {
+        res.send(result)
+        });
+    })
 
 app.listen(5000, () => {
     console.log('Server started on port 5000');
