@@ -163,7 +163,7 @@ app.post("/login", (request, response) => {
 });
 
 // delete an artical
-router.delete('/deleteartical/:id',(req,res)=>{
+app.delete('/deleteartical/:id',(req,res)=>{
     Articals.findByIdAndRemove({_id:req.params.id}).then((result) => {
         res.send(result)
         });
